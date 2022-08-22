@@ -16,16 +16,20 @@ continue_btn.onclick = () => {
     info_box.classList.remove("activateInfo");
     quiz_box.classList.add("activateQuiz");
     showQuestion(0);
+    queCounter(1);
 }
 
 let que_count = 0;
+let que_num = 1;
 
 next_btn = quiz_box.querySelector(".next_btn");
 
 next_btn.onclick = () => {
     if (que_count < questions.length - 1) {
         que_count++;
+        que_num++;
         showQuestion(que_count);
+        queCounter(que_num);
     } else {
         console.log("Questions Completed");
     }
@@ -35,10 +39,16 @@ function showQuestion(index) {
     const que_text = document.querySelector(".que_text");
     const option_list = document.querySelector('.option_list');
     let question = "<span>" + questions[index].question + "<span>";
-    let opt_tag = '<div class="option"><span>'+ questions[index].options[0] + '</span></div>'
-                + '<div class="option"><span>'+ questions[index].options[1] + '</span></div>'
-                + '<div class="option"><span>'+ questions[index].options[2] + '</span></div>'
-                + '<div class="option"><span>'+ questions[index].options[3] + '</span></div>';
+    let opt_tag = '<div class="option"><span>' + questions[index].options[0] + '</span></div>'
+        + '<div class="option"><span>' + questions[index].options[1] + '</span></div>'
+        + '<div class="option"><span>' + questions[index].options[2] + '</span></div>'
+        + '<div class="option"><span>' + questions[index].options[3] + '</span></div>';
     que_text.innerHTML = question;
     option_list.innerHTML = opt_tag;
+}
+
+function queCounter(index) {
+    const totalques = document.querySelector(".total_que");
+    let total_ques_tag = '<span><p>' + index + '</p>of<p>' + questions.length + '</p>Questions</span>';
+    totalques.innerHTML = total_ques_tag; 
 }
