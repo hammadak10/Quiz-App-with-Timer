@@ -20,6 +20,17 @@ continue_btn.onclick = () => {
 
 let que_count = 0;
 
+next_btn = quiz_box.querySelector(".next_btn");
+
+next_btn.onclick = () => {
+    if (que_count < questions.length - 1) {
+        que_count++;
+        showQuestion(que_count);
+    } else {
+        console.log("Questions Completed");
+    }
+}
+
 function showQuestion(index) {
     const que_text = document.querySelector(".que_text");
     const option_list = document.querySelector('.option_list');
