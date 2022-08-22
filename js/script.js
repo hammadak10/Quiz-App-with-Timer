@@ -3,6 +3,7 @@ const info_box = document.querySelector(".info_box");
 const exit_btn = info_box.querySelector(".buttons .quit");
 const continue_btn = info_box.querySelector(".buttons .restart");
 const quiz_box = document.querySelector(".quiz_box");
+const option_list = document.querySelector('.option_list');
 
 start_btn.onclick = () => {
     info_box.classList.add("activateInfo");
@@ -37,7 +38,6 @@ next_btn.onclick = () => {
 
 function showQuestion(index) {
     const que_text = document.querySelector(".que_text");
-    const option_list = document.querySelector('.option_list');
     let question = "<span>" + questions[index].question + "<span>";
     let opt_tag = '<div class="option"><span>' + questions[index].options[0] + '</span></div>'
         + '<div class="option"><span>' + questions[index].options[1] + '</span></div>'
@@ -45,10 +45,39 @@ function showQuestion(index) {
         + '<div class="option"><span>' + questions[index].options[3] + '</span></div>';
     que_text.innerHTML = question;
     option_list.innerHTML = opt_tag;
+
+    const option = option_list.querySelectorAll(".option");
+    for (let i = 0; i < option.length; i++) {
+        option[i].setAttribute("onclick", "optionSelected(this)");
+    }
+}
+
+function optionSelected(answer) {
+    let userAns = answer.textContent;
+    let correctAns = questions[que_count].answer;
+    let allOptions = option_list.children.length;
+    if (userAns == correctAns) {
+        answer.classList.add('correct');
+        console.log('Answer is correct');
+    } else {
+        answer.classList.add('incorrect');
+        console.log('Answer is incorrect');
+
+        for(let i = 0; i < allOptions; i++) {
+            console.log()
+            if(option_list.children[i].textContent === correctAns) {
+                option_list.children[i].setAttribute("class", "option correct");
+            }
+        }
+    }
+
+    for (let i = 0; i < allOptions; i++) {
+        option_list.children[i].classList.add('disabled');
+    }
 }
 
 function queCounter(index) {
     const totalques = document.querySelector(".total_que");
     let total_ques_tag = '<span><p>' + index + '</p>of<p>' + questions.length + '</p>Questions</span>';
-    totalques.innerHTML = total_ques_tag; 
+    totalques.innerHTML = total_ques_tag;
 }
