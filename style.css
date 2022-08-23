@@ -212,6 +212,22 @@ section .option_list .option:hover{
     border-color: #b8daff;
 }
 
+.option_list .option.correct.disabled{
+    color: #155724;
+    background: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.option_list .option.incorrect.disabled{
+    color: #721c24;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.option_list .option.disabled{
+    pointer-events: none;
+}
+
 .option_list .option:last-child{
     margin-bottom:0px;
 }
@@ -237,22 +253,6 @@ section .option_list .option:hover{
     color: #a42834;
     background: #f8d7da;
     border-color: #a42834;
-}
-
-.option_list .option.correct{
-    color: #3cbe5b;
-    background: #66fe89;
-    border-color: #c3e6cb;
-}
-
-.option_list .option.incorrect{
-    color: #721c24;
-    background: #f9717c;
-    border-color: #f5c6cb;
-}
-
-.option_list .option.disabled{
-    pointer-events: none;
 }
 
 .quiz_box footer{
