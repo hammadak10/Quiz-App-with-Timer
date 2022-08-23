@@ -24,7 +24,8 @@ body{
 }
 
 .info_box.activateInfo,
-.quiz_box.activateQuiz{
+.quiz_box.activateQuiz,
+.result_box.activateResult{
     z-index: 5;
     opacity: 1;
     pointer-events: auto;
@@ -177,6 +178,14 @@ body{
     user-select: none;
 }
 
+.quiz_box header .time_line{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: #007bff;
+}
+
 .quiz_box section{
     padding: 25px 30px 20px 30px;
     background: #fff;
@@ -279,6 +288,7 @@ footer .total_que span p:first-child{
 }
 
 footer .next_btn{
+    display: none;
     height: 40px;
     padding: 0 13px;
     font-size: 18px;
